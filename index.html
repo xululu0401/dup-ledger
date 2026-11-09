@@ -1,0 +1,800 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>雷同度对账台</title><style>
+:root{font:16px system-ui,-apple-system,"PingFang SC",sans-serif;color:#22344e;background:#eef3f8}*{box-sizing:border-box}body{margin:0}header,main,footer{max-width:1240px;margin:auto;padding:30px}header{padding-top:44px}h1{font-size:42px;margin:10px 0;letter-spacing:-1px;overflow-wrap:anywhere}header p{color:#5a6d84;max-width:860px;line-height:1.8}.eyebrow{font-size:12px;letter-spacing:2px;color:#4f6b91;font-weight:700}main{padding-top:0;display:grid;grid-template-columns:430px minmax(0,1fr);gap:22px}.panel{border:1px solid #d9e3ee;background:white;padding:24px;border-radius:18px;min-width:0}.input{align-self:start}h2{font-size:22px;margin:0 0 16px;overflow-wrap:anywhere}h3{font-size:17px;margin:22px 0 8px;overflow-wrap:anywhere}label{font-size:14px;font-weight:650;display:block;margin:13px 0 6px}input[type=text],textarea{width:100%;font:inherit;padding:10px;border:1px solid #aebfd4;border-radius:8px;color:inherit;background:#fcfdff}textarea{height:250px;line-height:1.6;font-size:12.5px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;resize:vertical}.tri{display:grid;grid-template-columns:1fr 1fr;gap:10px}.checks label{display:flex;align-items:flex-start;gap:8px;font-weight:500;font-size:13.5px;margin:8px 0;line-height:1.7}.checks label span{min-width:0;flex:1}.checks input{width:16px;height:16px;margin:2px 0 0;flex:0 0 auto}.buttons{display:flex;flex-wrap:wrap;gap:8px;margin:13px 0}button{font:inherit;font-size:14px;padding:9px 12px;border:1px solid #bac9dc;border-radius:8px;background:#eff4fb;color:#254d87;cursor:pointer;max-width:100%;white-space:normal}button.primary{background:#2d5f96;color:white;border-color:#2d5f96}button.mini{font-size:12px;padding:4px 8px;margin-left:6px}button:disabled{opacity:.4;cursor:not-allowed}.hint{font-size:13px;line-height:1.75;color:#61738a}.input>.hint{margin-top:12px}.notice{background:#fff3dc;color:#725025;padding:12px;border-radius:9px;font-size:13px;line-height:1.8}.notice.cool{background:#e8f2ee;color:#2a5b49}.metric{font-size:27px;font-weight:600;margin:6px 0 6px;line-height:1.5;overflow-wrap:anywhere}.metric strong{font-size:32px;font-weight:750}.stats{display:flex;gap:16px;flex-wrap:wrap;margin:18px 0}.stats strong{display:block;font-size:23px;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}.stats span{font-size:12px;color:#6a7c92;display:block;max-width:120px;line-height:1.4}.bad{color:#a23b28}.good{color:#2b6b4f}.tag{display:inline-block;font-size:12px;padding:3px 9px;border-radius:20px;background:#e8eef7;color:#3b5b86;margin-left:6px;vertical-align:middle}.tag.bad{background:#fbe4de;color:#a23b28}.card{border-left:3px solid #6e90bd;margin:16px 0 0 8px;padding-left:16px}.card p{margin:6px 0;font-size:13.5px;line-height:1.8;overflow-wrap:anywhere}.card .num{font-variant-numeric:tabular-nums}table{width:100%;border-collapse:collapse;font-size:13px;margin-top:10px}th,td{text-align:left;padding:8px 6px;border-bottom:1px solid #e4eaf1;font-variant-numeric:tabular-nums;overflow-wrap:anywhere;vertical-align:top}th{font-size:12px;color:#62748c;font-weight:650}tr.cur{background:#eef6f0}.scroll{overflow-x:auto}.matrix-wrap{overflow-x:auto;padding-bottom:6px}.matrix{width:auto;min-width:0;border-collapse:separate;border-spacing:2px}.matrix th{font-size:11px;color:#62748c;font-weight:600;padding:2px 3px;border:0;max-width:66px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.matrix td{width:34px;height:30px;text-align:center;font-size:11px;color:#12305a;border:0;border-radius:4px;padding:0}.matrix td.diag{background:#eef2f7;color:#9aabc0}.matrix td.over{outline:2px solid #d9694a;outline-offset:-2px;font-weight:700}.legend{font-size:12px;color:#61738a;line-height:1.7}.bars{margin:10px 0}.bar-row{display:grid;grid-template-columns:96px minmax(0,1fr) 118px;gap:8px;align-items:center;font-size:12.5px;margin:5px 0}.bar-name{overflow-wrap:anywhere}.bar-track{display:block;height:14px;background:#eef2f7;border-radius:4px;overflow:hidden}.bar-track i{display:block;height:100%;background:#c9774f}.bar-val{font-variant-numeric:tabular-nums;color:#5a6d84;overflow-wrap:anywhere}.ctx{font-size:12.5px;line-height:1.9;background:#f7fafd;padding:8px 10px;border-radius:8px;margin:6px 0;overflow-wrap:anywhere}.ctx .who{display:inline-block;font-weight:700;color:#2d5f96;margin-right:6px}.ctx .dim{color:#8a99ac}.ctx mark{background:#ffe6a8;padding:1px 3px;border-radius:3px}code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;overflow-wrap:anywhere}ul.words{padding-left:20px}ul.words li{font-size:12.5px;line-height:1.9;overflow-wrap:anywhere}#message{font-size:13px;min-height:22px;color:#526b87;overflow-wrap:anywhere}#error{color:#a34024;font-weight:650;min-height:22px;overflow-wrap:anywhere}#imports{display:none}#downloads{display:none}.model{margin-top:26px;border-top:1px solid #dae3ee;padding-top:18px}.model p{line-height:1.8;font-size:14px}summary{cursor:pointer;font-weight:650}footer{padding-top:0;color:#718095;font-size:12px;line-height:1.8}@media(max-width:820px){header,main,footer{padding:18px}h1{font-size:30px}main{grid-template-columns:1fr}.panel{padding:18px}.metric{font-size:21px}.metric strong{font-size:24px}.stats{gap:12px}.stats strong{font-size:19px}.stats span{max-width:96px}textarea{height:200px}.tri{grid-template-columns:1fr 1fr}.bar-row{grid-template-columns:minmax(0,1fr);gap:2px;margin:10px 0}.bar-track{width:100%}.scroll{overflow-x:visible}table.stack,table.stack tbody,table.stack tr,table.stack td{display:block;width:100%}table.stack thead{display:none}table.stack tr{border:1px solid #e0e8f0;border-radius:10px;padding:10px;margin:10px 0}table.stack td{border:0;padding:3px 0;font-size:13px;overflow-wrap:anywhere}table.stack td:before{content:attr(data-label) "：";color:#6a7c92;font-size:12px}}
+</style><header><div class="eyebrow">DUP LEDGER · 多份材料的两两重合对账</div><h1>这 8 份作业里，哪几份其实是同一份？</h1><p>贴上 2–20 份代码或文字（用只含 <code>---</code> 的行分隔），工具把它们切成连续 <strong>k 个 token</strong> 的片段，先摘掉出现在<strong>全部</strong>材料里的公共样板，再两两算<strong>净雷同度</strong>与<strong>双向包含度</strong>，把达阈值的一对对连起来、连成可疑组，并给出最长公共段作为证据。只做文本字面重合对账，不判定抄袭、不下结论。</p></header><main>
+<section class="panel input"><h2>先贴上要核对的材料</h2>
+<label for="docs">材料（块首行写 <code>@名称</code> 可命名，留空自动叫「稿件N」）</label>
+<textarea id="docs" spellcheck="false" placeholder="稿件一的内容……&#10;---&#10;稿件二的内容……"></textarea>
+<div class="tri"><div><label for="k">片段长度 k（token）</label><input type="text" id="k" value="5" inputmode="numeric"></div><div><label for="tau">连边阈值 %</label><input type="text" id="tau" value="60" inputmode="numeric"></div></div>
+<div class="checks">
+<label><input type="checkbox" id="keepCase"><span>区分大小写（默认不区分）</span></label>
+<label><input type="checkbox" id="stripComments" checked><span>去注释（<code>//</code>、<code>/* */</code>、行首 <code>#</code>；不理解字符串字面量）</span></label>
+<label><input type="checkbox" id="foldWhitespace" checked><span>折叠空白（换行、缩进、空行不影响）</span></label>
+<label><input type="checkbox" id="flatten"><span>抹平标识符（变量名→<code>x</code>、数字→<code>0</code>、字符串→<code>"S"</code>）</span></label>
+</div>
+<div class="hint">2–20 份；每份 ≤ 12000 字符、≤ 3000 个 token；k 取 2–12。全部数据都在本机浏览器里算，不上传、不联网。默认样例是虚构的 8 份作业，不来自任何真实考生或赛事。</div>
+<div class="buttons"><button id="demo" class="primary">载入虚构示例</button><button id="tight">阈值改为 45%</button><button id="loose">阈值改为 75%</button></div>
+<div class="buttons"><button id="save">保存到本机</button><button id="restore">恢复已保存</button><button id="backup">下载备份</button><button id="import">导入备份</button></div><input id="imports" type="file" accept=".json">
+<div id="message" role="status"></div></section>
+<section class="panel"><div id="error" role="alert"></div><div id="result" aria-live="polite"></div>
+<div class="buttons" id="downloads"><button id="csv">导出逐对明细 CSV</button><button id="md">导出结果说明</button><button id="png" class="primary">下载结果卡 PNG</button></div>
+<details class="model"><summary>算法与使用边界</summary>
+<p><strong>token</strong>：标识符、数字、双引号字符串、单引号单字符、以及其余任何单个非空白字符各算一个。这是通用文本口径，<strong>不是任何语言的语法解析</strong>；「去注释」是朴素文本处理，不理解字符串字面量（代码里字符串内含 <code>//</code>、<code>/*</code> 或行首 <code>#</code> 会被一并去掉，需要保真时关掉它）；「忽略大小写」对整段文本生效，字符串内容也会被转小写。中文按「一个字符一个 token」计，只反映字面重合。</p>
+<p><strong>片段</strong>：连续 k 个 token 拼成的串，按集合去重（同一片段出现两次与一次等价）；某份材料不足 k 个 token 时，整篇记作 1 个片段。</p>
+<p><strong>全组公共样板</strong>：出现在<strong>全部 N 份</strong>材料里的片段。N ≥ 3 时这些片段权重记 0（即<strong>摘掉不计</strong>），这是「看起来都很像」与「净雷同」之间的差额来源；N = 2 时没有「全组样板」可言，净雷同度等于表面重合度。</p>
+<p><strong>净雷同度</strong> = 摘掉样板后的 Jaccard（摘掉样板后的共有片段数 ÷ 摘掉样板后的并集片段数）；<strong>表面重合度</strong> = 不摘样板的 Jaccard；<strong>包含度</strong>（A→B）= 摘掉样板后的共有片段数 ÷ A 摘掉样板后的片段数，<strong>双向包含度</strong>取两个方向较大者——一份短材料整段被长材料包住时，Jaccard 会被稀释，包含度仍指向 100%。</p>
+<p><strong>连边条件</strong>：双向包含度 ≥ 阈值。净雷同度 ≥ 阈值必然也满足包含度 ≥ 阈值（包含度是共有片段除以更小的分母），因此阈值本质上是一条<strong>覆盖率</strong>线。连边后取连通分量，就是「可疑组」；组内可能有一对自身没达标、靠第三方传递才同组，页面上会单独标出。</p>
+<p><strong>精确性</strong>：枚举全部两两对、全部极大公共连续段，无采样、无启发式；只有三处上限——证据段搜索每份最多取前 2000 个 token、逐对表最多显示 24 对、每对证据最多列 6 段，页面上均有标注。</p>
+<p><strong>做不到的</strong>：不做语义、逻辑、算法思路层面的抄袭判定；不识别整体重写、换数据结构、换语言的改写；不做中文分词；不联网、不查库、不与他人或平台比对；<strong>只在你贴进本机的这些材料之间比较，不下结论、不给处分建议</strong>。样板块数占比是按本组材料算的，<strong>跨批次不可直接比较</strong>。</p>
+</details></section></main><footer>雷同度对账台 · V1.0.0 · 默认示例、封面与导出数字均为虚构示例，来自同一次计算结果 · AI 辅助开发 · 只做文本字面重合对账，不提供抄袭判定</footer>
+<script>(function(g){
+'use strict';
+// 雷同度对账台 · 核心计算（纯函数，无 DOM、无网络）
+// 口径与公式见 需求与调研.md「需求简报」一节
+
+var OPT_DEFAULTS={keepCase:false,stripComments:true,foldWhitespace:true,flatten:false};
+var KEYWORDS=new Set(['if','else','for','while','do','return','break','continue','switch','case','default',
+'int','long','short','float','double','char','bool','void','unsigned','signed','const','static','struct',
+'class','public','private','protected','new','delete','using','namespace','std','include','define','sizeof',
+'typedef','enum','union','template','try','catch','throw','this','null','true','false','nil','def','import',
+'from','as','in','not','and','or','is','none','elif','except','finally','raise','lambda','yield','with',
+'pass','global','print','printf','cout','cin','endl','let','var','function','begin','end','await','async']);
+
+var MAX_DOCS=20, MIN_DOCS=2, MAX_CHARS=12000, MAX_TOKENS=3000, MAX_K=12, MIN_K=2;
+var BLOCK_TOKEN_CAP=2000, EVIDENCE_PAIRS=12, EVIDENCE_BLOCKS=6, TABLE_PAIRS=24, BOILER_SAMPLES=5;
+
+function toInt(v,label){
+  if(typeof v==='number'){if(!Number.isInteger(v))throw new Error(label+' 需为整数');return v;}
+  if(typeof v==='string'&&v.trim()!==''){var n=Number(v);if(!Number.isFinite(n)||!Number.isInteger(n))throw new Error(label+' 需为整数');return n;}
+  throw new Error(label+'不能为空');
+}
+
+// ── 文本归一化 ───────────────────────────────────────────────
+// 朴素文本处理：不理解字符串字面量；代码里字符串内含 // 、/* 或行首 # 会被一并去掉。
+function stripComments(s){
+  var out='',i=0,n=s.length;
+  while(i<n){
+    var c=s[i];
+    if(c==='/'&&s[i+1]==='*'){var e1=s.indexOf('*/',i+2);i=e1<0?n:e1+2;out+=' ';continue;}
+    if(c==='/'&&s[i+1]==='/'){var e2=s.indexOf('\n',i);i=e2<0?n:e2;out+=' ';continue;}
+    if(c==='#'){
+      var k=out.length-1,atLineStart=true;
+      while(k>=0&&out[k]!=='\n'){if(!/\s/.test(out[k])){atLineStart=false;break;}k--;}
+      if(atLineStart){var e3=s.indexOf('\n',i);i=e3<0?n:e3;out+=' ';continue;}
+    }
+    out+=c;i++;
+  }
+  return out;
+}
+
+function normalizeText(text,o){
+  var s=String(text).replace(/\r\n?/g,'\n');
+  if(o.stripComments)s=stripComments(s);
+  if(o.foldWhitespace)s=s.replace(/\s+/g,' ');
+  if(!o.keepCase)s=s.toLowerCase();
+  return s;
+}
+
+var TOKEN_RE=/[A-Za-z_][A-Za-z0-9_]*|\d+(?:\.\d+)?|"(?:[^"\\]|\\.)*"|'(?:[^'\\\s]|\\.)*'|[^\sA-Za-z0-9_]/g;
+
+function tokenize(text,o){
+  var s=normalizeText(text,o);
+  var raw=s.match(TOKEN_RE)||[];
+  if(!o.flatten)return raw;
+  return raw.map(function(t){
+    var c=t[0];
+    if(c==='"'||c==="'")return c==='"'?'"S"':"'C'";
+    if(/[0-9]/.test(c))return '0';
+    if(/[A-Za-z_]/.test(c))return KEYWORDS.has(t)?t:'x';
+    return t;
+  });
+}
+
+// ── 稿件解析 ────────────────────────────────────────────────
+function parseDocs(raw){
+  if(typeof raw!=='string')throw new Error('稿件格式不正确：需要一个文本框内容');
+  var lines=raw.replace(/\r\n?/g,'\n').split('\n');
+  var blocks=[],cur=[];
+  for(var i=0;i<lines.length;i++){
+    if(lines[i].trim()==='---'){blocks.push(cur);cur=[];}else cur.push(lines[i]);
+  }
+  blocks.push(cur);
+  var out=[];
+  for(var b=0;b<blocks.length;b++){
+    var blk=blocks[b].slice(),name='';
+    while(blk.length&&blk[0].trim()==='')blk.shift();   // 允许块首空行后再写 @名称
+    if(blk.length&&/^\s*@/.test(blk[0])){name=blk[0].replace(/^\s*@\s*/,'').trim();blk.shift();}
+    var text=blk.join('\n').trim();   // 稿件文本两端空白不计
+    if(text==='')continue;
+    out.push({name:name,text:text});
+  }
+  out.forEach(function(d,idx){if(!d.name)d.name='稿件'+(idx+1);});
+  // 重名自动加序号
+  var seen={};
+  out.forEach(function(d){
+    if(seen[d.name]===undefined){seen[d.name]=1;}
+    else{seen[d.name]++;d.name=d.name+'（'+seen[d.name]+'）';}
+  });
+  return out;
+}
+
+// ── 片段 ────────────────────────────────────────────────────
+var SEP='\u0001';
+
+function gramsOf(tokens,k){
+  var list=[],set=new Set();
+  if(tokens.length===0)return {list:list,set:set,whole:false};
+  if(tokens.length<k){
+    var key=tokens.join(SEP);
+    list.push(key);set.add(key);
+    return {list:list,set:set,whole:true};
+  }
+  for(var i=0;i+k<=tokens.length;i++){
+    var g=tokens.slice(i,i+k).join(SEP);
+    if(!set.has(g)){set.add(g);list.push(g);}
+  }
+  return {list:list,set:set,whole:false};
+}
+
+function gramLabel(gram){
+  return gram.split(SEP).join(' · ');
+}
+
+// ── 极大公共连续段（精确，穷举全部极大段）─────────────────────
+function commonBlocksAll(a,b,minLen){
+  var n=a.length,m=b.length,out=[];
+  if(!n||!m||minLen<1)return out;
+  var W=m+1,L=new Uint16Array((n+1)*W),i,j;
+  for(i=1;i<=n;i++){
+    for(j=1;j<=m;j++){ if(a[i-1]===b[j-1])L[i*W+j]=L[(i-1)*W+(j-1)]+1; }
+  }
+  for(i=1;i<=n;i++){
+    for(j=1;j<=m;j++){
+      var len=L[i*W+j];
+      if(len<minLen)continue;
+      if(i<n&&j<m&&L[(i+1)*W+(j+1)]===len+1)continue; // 还能沿对角线延长 → 不是极大段
+      out.push({len:len,i:i-len,j:j-len});
+    }
+  }
+  // 去掉被更长的块在两侧区间上完全包住的块（其内容必然是被包块的超串，显示冗余）
+  out=out.filter(function(c){
+    return !out.some(function(d){
+      return d!==c&&d.i<=c.i&&d.j<=c.j&&d.i+d.len>=c.i+c.len&&d.j+d.len>=c.j+c.len;
+    });
+  });
+  out.sort(function(x,y){return y.len-x.len||x.i-y.i||x.j-y.j;});
+  return out;
+}
+
+function round1(x){return Math.round(x*10)/10;}   // 已按 0–100 计的值，保留 1 位小数
+function pct(r){return round1(r*100);}            // 比值 0–1 → 百分数 0–100（1 位小数）
+function linkReason(p,t){
+  var byNet=p.jaccardW>=t,byCon=p.containmentMax>=t;
+  // 定理：双向包含度 ≥ 净雷同度（同一次共享权重除以更小的分母）
+  return byNet&&byCon?'both':(byNet?'net':'contain');
+}
+
+// ── 主计算 ─────────────────────────────────────────────────
+function solve(input){
+  if(!input||typeof input!=='object')throw new Error('输入格式不正确');
+  var docs=parseDocs(input.docs);
+  if(docs.length<MIN_DOCS)throw new Error('至少需要 2 份稿件才能对账');
+  if(docs.length>MAX_DOCS)throw new Error('最多 20 份稿件');
+  var k=toInt(input.k,'片段长度 k');
+  if(k<MIN_K||k>MAX_K)throw new Error('片段长度 k 需为 '+MIN_K+'–'+MAX_K+' 的整数');
+  var tau=toInt(input.tau,'阈值');
+  if(tau<0||tau>100)throw new Error('阈值需为 0–100 的整数');
+  var o={keepCase:!!OPT_DEFAULTS.keepCase,stripComments:!!OPT_DEFAULTS.stripComments,
+         foldWhitespace:!!OPT_DEFAULTS.foldWhitespace,flatten:!!OPT_DEFAULTS.flatten};
+  var io=input.opts||{};
+  ['keepCase','stripComments','foldWhitespace','flatten'].forEach(function(key){
+    if(io[key]!==undefined)o[key]=!!io[key];
+  });
+
+  var N=docs.length,chars=[];
+  docs.forEach(function(d){
+    chars.push([...d.text].length);
+    if([...d.text].length>MAX_CHARS)throw new Error('「'+d.name+'」超过 '+MAX_CHARS+' 字符');
+  });
+
+  var toks=[],grs=[];
+  docs.forEach(function(d,idx){
+    var tk=tokenize(d.text,o);
+    if(tk.length===0)throw new Error('「'+d.name+'」去掉注释后没有任何 token，请检查内容或关闭「去注释」');
+    if(tk.length>MAX_TOKENS)throw new Error('「'+d.name+'」超过 '+MAX_TOKENS+' 个 token');
+    toks.push(tk);grs.push(gramsOf(tk,k));
+  });
+
+  // df 与权重：出现在全部 N 份里的片段（df=N）视为「全组公共样板」，权重 0（N≥3 时才谈样板）；
+  // 其余片段一律等权 1。因此「净雷同度」= 先摘掉公共样板再算的重合度。
+  var df=new Map();
+  grs.forEach(function(gg){ gg.set.forEach(function(x){df.set(x,(df.get(x)||0)+1);}); });
+  var boilerApplied=N>=3;
+  var wOf=new Map();
+  df.forEach(function(c,x){wOf.set(x,(boilerApplied&&c===N)?0:1);});
+  var allGrams=new Set();grs.forEach(function(gg){gg.set.forEach(function(x){allGrams.add(x);});});
+  var boilerGrams=[];df.forEach(function(c,x){if(c===N)boilerGrams.push(x);});
+  boilerGrams.sort();
+
+  var docInfo=[],tot=[];
+  docs.forEach(function(d,idx){
+    var sum=0,bsum=0,bcnt=0;
+    grs[idx].set.forEach(function(x){var w=wOf.get(x);sum+=w;if(df.get(x)===N){bsum+=w;bcnt++;}});
+    tot.push(sum);
+    docInfo.push({index:idx,name:d.name,chars:chars[idx],tokens:toks[idx].length,
+      grams:grs[idx].set.size,wholeGram:grs[idx].whole,weightTotal:sum,boilerWeight:bsum,
+      boilerGrams:bcnt,boilerShare:grs[idx].set.size>0?bcnt/grs[idx].set.size:0,exclusive:0});
+    // 只有本份含有的片段数
+    var ex=0;grs[idx].set.forEach(function(x){if(df.get(x)===1)ex++;});
+    docInfo[idx].exclusive=ex;
+  });
+
+  function metrics(i,j){
+    var A=grs[i].set,B=grs[j].set,shared=0,sumShared=0,sharedBoiler=0,sharedGrams=[];
+    A.forEach(function(x){ if(B.has(x)){shared++;var w=wOf.get(x);sumShared+=w;if(df.get(x)===N)sharedBoiler++;sharedGrams.push(x);} });
+    var unionCount=A.size+B.size-shared,sumUnion=tot[i]+tot[j]-sumShared;
+    var inter=tot[i]+tot[j];
+    return {a:i,b:j,shared:shared,sharedGrams:sharedGrams,sharedBoiler:sharedBoiler,union:unionCount,
+      jaccardW:sumUnion>0?sumShared/sumUnion:0,
+      jaccardRaw:unionCount>0?shared/unionCount:0,
+      cAB:tot[i]>0?sumShared/tot[i]:0,
+      cBA:tot[j]>0?sumShared/tot[j]:0,
+      containmentMax:Math.max(tot[i]>0?sumShared/tot[i]:0,tot[j]>0?sumShared/tot[j]:0)};
+  }
+
+  var pairs=[],matrix=[];
+  for(var a=0;a<N;a++){matrix.push(new Array(N).fill(0));matrix[a][a]=1;}
+  for(var i2=0;i2<N;i2++)for(var j2=i2+1;j2<N;j2++){
+    var m=metrics(i2,j2);
+    pairs.push(m);matrix[i2][j2]=m.jaccardW;matrix[j2][i2]=m.jaccardW;
+  }
+  pairs.sort(function(x,y){return y.jaccardW-x.jaccardW||y.containmentMax-x.containmentMax||x.a-y.a||x.b-y.b;});
+
+  var t=tau/100;
+  // 连边：双向包含度 ≥ τ。净雷同度 ≤ 双向包含度恒成立，故「净雷同度 ≥ τ」是它的子集，
+  // 写成 OR 只为口径完整；reason 记录这一对是靠哪一项达标的。
+  var links=pairs.filter(function(p){return p.containmentMax>=t||p.jaccardW>=t;});
+  // 只像在公共样板上的对：表面重合过阈值，但净雷同与双向包含都没过
+  var misleading=pairs.filter(function(p){return p.jaccardRaw>=t&&p.jaccardW<t&&p.containmentMax<t;})
+    .sort(function(x,y){return y.jaccardRaw-x.jaccardRaw||x.a-y.a||x.b-y.b;});
+
+  // 并查集
+  var par=[];for(var q=0;q<N;q++)par.push(q);
+  function find(x){while(par[x]!==x){par[x]=par[par[x]];x=par[x];}return x;}
+  function uni(x,y){x=find(x);y=find(y);if(x!==y)par[y]=x;}
+  var linkSet=new Set();
+  links.forEach(function(p){uni(p.a,p.b);linkSet.add(p.a+'-'+p.b);});
+
+  var comp=new Map();
+  for(var c2=0;c2<N;c2++){var r=find(c2);if(!comp.has(r))comp.set(r,[]);comp.get(r).push(c2);}
+  var groups=[],independent=[];
+  comp.forEach(function(mem){
+    mem.sort(function(x,y){return x-y;});
+    if(mem.length<2){independent.push(mem[0]);return;}
+    var inG=pairs.filter(function(p){return mem.indexOf(p.a)>=0&&mem.indexOf(p.b)>=0;});
+    var maxW=0,minW=1;
+    inG.forEach(function(p){if(p.jaccardW>maxW)maxW=p.jaccardW;if(p.jaccardW<minW)minW=p.jaccardW;});
+    if(!inG.length){maxW=0;minW=0;}
+    var linked=inG.filter(function(p){return p.containmentMax>=t||p.jaccardW>=t;});
+    groups.push({members:mem,size:mem.length,
+      edges:inG.map(function(p){return {a:p.a,b:p.b,jaccardW:p.jaccardW,containmentMax:p.containmentMax,
+        reason:linkReason(p,t),linked:(p.containmentMax>=t||p.jaccardW>=t)};}),
+      edgeCount:inG.length,linkCount:linked.length,maxW:maxW,minW:minW,
+      avgW:inG.length?inG.reduce(function(s,p){return s+p.jaccardW;},0)/inG.length:0,
+      bridged:linked.length<inG.length},
+      // bridged=true 表示组内有对未达标，靠第三方传递才会同组
+      );
+  });
+  groups.sort(function(x,y){return y.size-x.size||y.maxW-x.maxW||x.members[0]-y.members[0];});
+  independent.sort(function(x,y){return x-y;});
+
+  // 阈值敏感性（τ 与 ±10、±20，越界裁剪去重）
+  var taus=[tau-20,tau-10,tau,tau+10,tau+20].map(function(x){return Math.min(100,Math.max(0,x));})
+    .filter(function(x,idx,arr){return arr.indexOf(x)===idx;}).sort(function(x,y){return x-y;});
+  var sensitivity=taus.map(function(tt){
+    var lim=tt/100,es=pairs.filter(function(p){return p.containmentMax>=lim||p.jaccardW>=lim;});
+    var p2=[];for(var z=0;z<N;z++)p2.push(z);
+    function f2(x){while(p2[x]!==x){p2[x]=p2[p2[x]];x=p2[x];}return x;}
+    es.forEach(function(p){var A2=f2(p.a),B2=f2(p.b);if(A2!==B2)p2[B2]=A2;});
+    var cnt={};
+    es.forEach(function(p){cnt[f2(p.a)]=(cnt[f2(p.a)]||0)+1;});
+    var involved=new Set();es.forEach(function(p){involved.add(p.a);involved.add(p.b);});
+    var gsz={};var used=new Set();
+    es.forEach(function(p){var rt=f2(p.a);if(!used.has(rt)){used.add(rt);var c3=0;for(var z2=0;z2<N;z2++)if(f2(z2)===rt)c3++;gsz[rt]=c3;}});
+    var gc=0;Object.keys(gsz).forEach(function(rt){if(gsz[rt]>=2)gc++;});
+    return {tau:tt,edges:es.length,groups:gc,involved:involved.size};
+  });
+
+  // 证据对：连边对按 score 降序取前 EVIDENCE_PAIRS；无连边时取最像的一对
+  var byScore=pairs.slice().sort(function(x,y){
+    var sx=Math.max(x.jaccardW,x.containmentMax),sy=Math.max(y.jaccardW,y.containmentMax);
+    return sy-sx||x.a-y.a||x.b-y.b;});
+  var chosen=links.length?links.slice().sort(function(x,y){
+    var sx=Math.max(x.jaccardW,x.containmentMax),sy=Math.max(y.jaccardW,y.containmentMax);
+    return sy-sx||x.a-y.a||x.b-y.b;}).slice(0,EVIDENCE_PAIRS)
+    :(byScore.length?[byScore[0]]:[]);
+  var evidence=chosen.map(function(p){
+    var ta=toks[p.a].slice(0,BLOCK_TOKEN_CAP),tb=toks[p.b].slice(0,BLOCK_TOKEN_CAP);
+    var all=commonBlocksAll(ta,tb,k);
+    var top=all.slice(0,EVIDENCE_BLOCKS).map(function(bl){
+      return {len:bl.len,i:bl.i,j:bl.j,text:ta.slice(bl.i,bl.i+Math.min(bl.len,20)).join(' ')+(bl.len>20?' …':'')};
+    });
+    return {a:p.a,b:p.b,jaccardW:p.jaccardW,containmentMax:p.containmentMax,jaccardRaw:p.jaccardRaw,
+      blockCount:all.length,maxBlock:all.length?all[0].len:0,blocks:top,
+      truncatedA:toks[p.a].length>BLOCK_TOKEN_CAP,truncatedB:toks[p.b].length>BLOCK_TOKEN_CAP};
+  });
+
+  var maxPair=pairs.length?pairs[0]:null;
+  var maxRaw=pairs.slice().sort(function(x,y){return y.jaccardRaw-x.jaccardRaw||x.a-y.a||x.b-y.b;})[0]||null;
+  var involvedSet=new Set();links.forEach(function(p){involvedSet.add(p.a);involvedSet.add(p.b);});
+
+  return {
+    N:N,k:k,tau:tau,opts:o,
+    docs:docInfo,
+    gramStats:{unique:allGrams.size,totalPerDoc:docInfo.map(function(d){return d.grams;}),
+      boiler:boilerGrams.length,boilerApplied:boilerApplied,
+      boilerShareAvg:docInfo.reduce(function(s,d){return s+d.boilerShare;},0)/N,
+      boilerSamples:boilerGrams.slice(0,BOILER_SAMPLES).map(function(x){return {label:gramLabel(x),df:df.get(x),w:wOf.get(x)};})},
+    pairs:pairs.map(function(p){
+      return {a:p.a,b:p.b,jaccardW:p.jaccardW,jaccardRaw:p.jaccardRaw,cAB:p.cAB,cBA:p.cBA,
+        containmentMax:p.containmentMax,shared:p.shared,union:p.union,sharedBoiler:p.sharedBoiler};
+    }),
+    matrix:matrix,
+    links:links.map(function(p){return {a:p.a,b:p.b,jaccardW:p.jaccardW,containmentMax:p.containmentMax,score:Math.max(p.jaccardW,p.containmentMax),reason:linkReason(p,t)};}),
+    misleading:misleading.map(function(p){return {a:p.a,b:p.b,jaccardRaw:p.jaccardRaw,jaccardW:p.jaccardW};}),
+    groups:groups,
+    independent:independent,
+    sensitivity:sensitivity,
+    evidence:evidence,
+    stats:{linkCount:links.length,groupCount:groups.length,largest:groups.length?groups[0].size:0,
+      involved:involvedSet.size,independent:independent.length,
+      maxPair:maxPair?{a:maxPair.a,b:maxPair.b,jaccardW:maxPair.jaccardW,containmentMax:maxPair.containmentMax}:null,
+      maxRaw:maxRaw?{a:maxRaw.a,b:maxRaw.b,jaccardRaw:maxRaw.jaccardRaw,jaccardW:maxRaw.jaccardW}:null,
+      misleadingCount:misleading.length},
+    tablePairs:TABLE_PAIRS
+  };
+}
+
+var sample={
+docs:[
+'@张一\nusing namespace std;\nint main() {\n  int n;\n  cin >> n;\n  int a[1005];\n  for (int i = 0; i < n; i++) cin >> a[i];\n  int sum = 0;\n  for (int i = 0; i < n; i++) sum = sum + a[i];\n  double avg = sum * 1.0 / n;\n  cout << "sum=" << sum << endl;\n  cout << "avg=" << avg << endl;\n  return 0;\n}',
+'@李二\nusing namespace std;\nint main() {\n  int n;\n  cin >> n;\n  int a[1005];\n  for (int i = 0; i < n; i++) cin >> a[i];\n  long long total = 0;\n  int mx = a[0];\n  for (int i = 1; i < n; i++) {\n    total += a[i];\n    if (a[i] > mx) mx = a[i];\n  }\n  printf("%lld %d\\n", total, mx);\n  return 0;\n}',
+'@王三\nusing namespace std;\nint main() {\n  int n;\n  cin >> n;\n  int a[1005];\n  for (int i = 0; i < n; i++) cin >> a[i];\n  int sum = 0;\n  for (int i = 0; i < n; i++) sum = sum + a[i];\n  double avg = sum * 1.0 / n;\n  cout << "total=" << sum << endl;\n  cout << "average=" << avg << endl;\n  return 0;\n}',
+'@赵四\nusing namespace std;\nint main() {\n  int n;\n  cin >> n;\n  int a[1005];\n  for (int i = 0; i < n; i++) cin >> a[i];\n  int sum = 0;\n  if (n == 0) return 0;\n  for (int i = 0; i < n; i++) sum = sum + a[i];\n  double avg = sum * 1.0 / n;\n  cout << "sum=" << sum << "\\n";\n  cout << "avg=" << avg << "\\n";\n  return 0;\n}',
+'@陈五\nusing namespace std;\nint main() {\n  int n;\n  cin >> n;\n  int a[1005];\n  for (int i = 0; i < n; i++) cin >> a[i];\n  sort(a, a + n);\n  int mid = a[n / 2];\n  cout << mid << "\\n";\n  return 0;\n}',
+'@刘六\nusing namespace std;\nint main() {\n  int n;\n  cin >> n;\n  int a[1005];\n  for (int i = 0; i < n; i++) cin >> a[i];\n  int best = a[0];\n  for (int i = 1; i < n; i++) if (a[i] > best) best = a[i];\n  cout << best << "\\n";\n  return 0;\n}',
+'@孙七\nusing namespace std;\nint main() {\n  int n;\n  cin >> n;\n  int a[1005];\n  for (int i = 0; i < n; i++) cin >> a[i];\n  long long s = 0;\n  int big = a[0];\n  for (int i = 1; i < n; i++) {\n    s += a[i];\n    if (a[i] > big) big = a[i];\n  }\n  printf("%lld %d\\n", s, big);\n  return 0;\n}',
+'@周八\nusing namespace std;\nint main() {\n  int n;\n  cin >> n;\n  int a[1005];\n  for (int i = 0; i < n; i++) cin >> a[i];\n  cout << n << "\\n";\n  return 0;\n}'
+].join('\n---\n'),
+k:'5',tau:'60',opts:{keepCase:false,stripComments:true,foldWhitespace:true,flatten:false}
+};
+
+var api={sample:sample,solve:solve,parseDocs:parseDocs,normalizeText:normalizeText,tokenize:tokenize,
+  gramsOf:gramsOf,gramLabel:gramLabel,commonBlocksAll:commonBlocksAll,round1:round1,pct:pct,
+  OPT_DEFAULTS:OPT_DEFAULTS,KEYWORDS:KEYWORDS,
+  LIMITS:{MAX_DOCS:MAX_DOCS,MIN_DOCS:MIN_DOCS,MAX_CHARS:MAX_CHARS,MAX_TOKENS:MAX_TOKENS,MIN_K:MIN_K,MAX_K:MAX_K,
+    BLOCK_TOKEN_CAP:BLOCK_TOKEN_CAP,EVIDENCE_PAIRS:EVIDENCE_PAIRS,EVIDENCE_BLOCKS:EVIDENCE_BLOCKS,TABLE_PAIRS:TABLE_PAIRS}};
+g.AppCore=api;if(typeof module!=='undefined')module.exports=api;
+})(globalThis);
+</script><script>(function(){
+'use strict';
+var C=window.AppCore;
+var $=function(id){return document.getElementById(id);};
+var STORE='dup-ledger-v1';
+var state={result:null,variant:null,baseline:null,error:''};
+
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){
+  return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+function p1(r){return C.round1(r*100).toFixed(1);}
+function p1v(v){return C.round1(v).toFixed(1);}   // 已是 0–100 的值
+function optsFromDom(){
+  return {keepCase:$('keepCase').checked,stripComments:$('stripComments').checked,
+    foldWhitespace:$('foldWhitespace').checked,flatten:$('flatten').checked};
+}
+function inputFromDom(){return {docs:$('docs').value,k:$('k').value,tau:$('tau').value,opts:optsFromDom()};}
+function setMessage(t,bad){$('message').innerHTML=bad?('<span class="bad">'+esc(t)+'</span>'):esc(t);}
+function reasonText(r){return r==='both'?'净雷同与包含度都达标':(r==='net'?'净雷同达标':'包含度达标');}
+function nameOf(i){return state.result?state.result.docs[i].name:('#'+i);}
+
+function recompute(keepBaseline){
+  try{
+    var inp=inputFromDom();
+    var r=C.solve(inp);
+    state.tokens=C.parseDocs(inp.docs).map(function(d){return C.tokenize(d.text,inp.opts);});
+    state.result=r;state.error='';
+    if(!keepBaseline)state.baseline=null;
+    if(state.baseline!==null&&(state.baseline<0||state.baseline>=r.N))state.baseline=null;
+    try{
+      var alt=Object.assign({},inputFromDom());
+      alt.opts=Object.assign({},alt.opts,{flatten:!alt.opts.flatten});
+      state.variant=C.solve(alt);
+    }catch(e){state.variant=null;}
+    $('error').textContent='';
+    render(r);
+    setMessage('已按当前条件重算：'+r.N+' 份稿件、'+r.pairs.length+' 对、片段长度 k='+r.k+'、阈值 '+r.tau+'%。');
+  }catch(e){
+    state.error=e.message;state.result=null;state.variant=null;
+    $('error').textContent=e.message;
+    $('result').innerHTML='<p class="hint">修好上面的输入后会自动重算。</p>';
+    setMessage('输入有问题，未计算：'+e.message,true);
+  }
+}
+
+// ── 渲染 ────────────────────────────────────────────────────
+function render(r){
+  var h=[];
+  var main=r.stats.groupCount>0
+    ? '<div class="metric">'+r.N+' 份稿件里找到 <strong>'+r.stats.groupCount+' 组</strong>可疑雷同，最大一组 <strong>'+r.stats.largest+' 份</strong></div>'
+    : '<div class="metric">'+r.N+' 份稿件里<strong>没有</strong>达到 '+r.tau+'% 阈值的雷同对</div>';
+  var top=r.pairs[0];
+  if(top){
+    main+='<p class="hint">最像的一对：<strong>'+esc(r.docs[top.a].name)+'</strong> × <strong>'+esc(r.docs[top.b].name)+'</strong>，净雷同度 <strong>'+p1(top.jaccardW)+'%</strong>'+
+      '（表面重合 '+p1(top.jaccardRaw)+'%、双向包含度 '+p1(top.containmentMax)+'%）。</p>';
+  }
+  h.push(main);
+  h.push('<div class="stats">'+
+    stat(r.stats.linkCount,'对达到阈值（需人工复核）')+
+    stat(r.stats.groupCount,'组可疑雷同')+
+    stat(r.stats.involved,'份稿件被连边')+
+    stat(r.stats.independent,'份独立')+
+    stat(r.gramStats.boiler,'个全组样板片段')+
+    stat(r.stats.misleadingCount,'对只像在样板上')+
+    '</div>');
+
+  // 结论卡
+  if(r.groups.length){
+    h.push('<h3>可疑组（含传递）</h3>');
+    r.groups.forEach(function(g,gi){
+      var mem=g.members.map(function(i){return esc(r.docs[i].name);}).join(' / ');
+      h.push('<div class="card"><p><strong>组 '+(gi+1)+'：'+mem+'</strong>'+
+        '<span class="tag bad">'+g.size+' 份</span>'+
+        (g.bridged?'<span class="tag">含传递</span>':'')+'</p>'+
+        '<p class="num">组内 '+g.edgeCount+' 对里 '+g.linkCount+' 对达阈值；净雷同度最高 '+p1(g.maxW)+'%、最低 '+p1(g.minW)+'%、平均 '+p1(g.avgW)+'%。'+
+        (g.bridged?'最低那一对自身没达标，是靠着与组内第三人相连才同组——这类组要逐个看证据，不能直接当成一伙。':'')+'</p>'+
+        '<p class="num">组内各对：'+g.edges.map(function(e){
+          return esc(r.docs[e.a].name)+'–'+esc(r.docs[e.b].name)+' '+p1(e.jaccardW)+'%'+(e.linked?'（连边·'+reasonText(e.reason)+'）':'（未达标）');
+        }).join('；')+'</p></div>');
+    });
+  }
+  if(r.stats.misleadingCount){
+    h.push('<div class="notice"><strong>'+r.stats.misleadingCount+' 对「表面像、净雷同不像」</strong>（表面重合度过阈值，但净雷同度与双向包含度都没过）：'+
+      r.misleading.slice(0,6).map(function(p){return esc(r.docs[p.a].name)+'–'+esc(r.docs[p.b].name)+'（表面 '+p1(p.jaccardRaw)+'% → 净 '+p1(p.jaccardW)+'%）';}).join('；')+
+      (r.misleading.length>6?' 等':'')+'。<br>这些对共有的片段基本是全组公共样板，按本工具口径不计入雷同；若你确实想连边，请降低阈值。</div>');
+  }
+  var hint=variantHint(r);
+  if(hint)h.push(hint);
+
+  // 矩阵热图
+  h.push('<h3>两两净雷同度矩阵</h3><div class="matrix-wrap"><table class="matrix"><tr><th></th>'+
+    r.docs.map(function(d){return '<th>'+esc(d.name)+'</th>';}).join('')+'</tr>'+
+    r.docs.map(function(d,i){
+      return '<tr><th>'+esc(d.name)+'</th>'+r.docs.map(function(e,j){
+        if(i===j)return '<td class="diag">—</td>';
+        var v=r.matrix[i][j],over=v>=r.tau/100;
+        return '<td class="'+(over?'over':'')+'" style="background:'+cellColor(v)+'">'+C.round1(v*100).toFixed(0)+'</td>';
+      }).join('')+'</tr>';
+    }).join('')+'</table></div><p class="legend">格子里的数字是净雷同度（%，四舍五入到整数）；红框表示达到阈值 '+r.tau+'%。对角线不参与比较。</p>');
+
+  // 逐对表
+  var boilerCol=r.gramStats.boilerApplied?'其中样板':'其中双方共有';
+  var rows=r.pairs.slice(0,r.tablePairs);
+  h.push('<h3>逐对明细'+(r.pairs.length>rows.length?'（按净雷同度降序，显示前 '+rows.length+' 对，共 '+r.pairs.length+' 对）':'（共 '+rows.length+' 对）')+'</h3>'+
+    '<div class="scroll"><table class="stack"><thead><tr><th>稿件 A</th><th>稿件 B</th><th>净雷同度</th><th>表面重合度</th><th>双向包含度</th><th>A→B 包含</th><th>B→A 包含</th><th>共有/并集片段</th><th>其中样板</th><th>判定</th></tr></thead><tbody>'+
+    rows.map(function(p){
+      var over=p.containmentMax>=r.tau/100||p.jaccardW>=r.tau/100;
+      return '<tr><td data-label="稿件 A">'+esc(r.docs[p.a].name)+'</td><td data-label="稿件 B">'+esc(r.docs[p.b].name)+
+      '</td><td data-label="净雷同度"><strong>'+p1(p.jaccardW)+'%</strong></td>'+
+      '<td data-label="表面重合度">'+p1(p.jaccardRaw)+'%</td>'+
+      '<td data-label="双向包含度">'+p1(p.containmentMax)+'%</td>'+
+      '<td data-label="A→B 包含">'+p1(p.cAB)+'%</td>'+
+      '<td data-label="B→A 包含">'+p1(p.cBA)+'%</td>'+
+      '<td data-label="共有/并集片段">'+p.shared+' / '+p.union+'</td>'+
+      '<td data-label="'+boilerCol+'">'+p.sharedBoiler+'</td>'+
+      '<td data-label="判定">'+(over?'<span class="tag bad">达标</span>':'未达阈值')+'</td></tr>';
+    }).join('')+'</tbody></table></div>');
+
+  // 证据段
+  if(r.evidence.length&&r.evidence.some(function(e){return e.blockCount>0;})){
+    h.push('<h3>最长公共段证据</h3>');
+    r.evidence.forEach(function(e){
+      if(e.blockCount===0)return;
+      h.push('<div class="card"><p><strong>'+esc(r.docs[e.a].name)+' × '+esc(r.docs[e.b].name)+'</strong>：净雷同 '+p1(e.jaccardW)+'%，共 '+e.blockCount+' 段≥'+r.k+' 个 token 的公共连续段，最长 '+e.maxBlock+' 个 token。'+
+        (e.truncatedA||e.truncatedB?'<span class="tag">仅比前 2000 个 token</span>':'')+'</p>');
+      var first=e.blocks[0];
+      if(first){
+        h.push(context('A · '+r.docs[e.a].name,e.a,first));
+        h.push(context('B · '+r.docs[e.b].name,e.b,first));
+      }
+      h.push('<div class="scroll"><table class="stack"><thead><tr><th>#</th><th>长度(token)</th><th>A 起始</th><th>B 起始</th><th>片段预览</th></tr></thead><tbody>'+
+        e.blocks.map(function(b,bi){return '<tr><td data-label="#">'+(bi+1)+'</td><td data-label="长度(token)">'+b.len+'</td><td data-label="A 起始">'+b.i+'</td><td data-label="B 起始">'+b.j+'</td><td data-label="片段预览"><code>'+esc(b.text)+'</code></td></tr>';}).join('')+
+        '</tbody></table></div></div>');
+    });
+  }
+
+  // 基准
+  if(state.baseline!==null&&r.N>1){
+    var base=state.baseline;
+    var list=r.pairs.filter(function(p){return p.a===base||p.b===base;}).map(function(p){
+      var other=p.a===base?p.b:p.a;
+      return {other:other,net:p.jaccardW,raw:p.jaccardRaw,con:p.a===base?p.cAB:p.cBA,shared:p.shared};
+    }).sort(function(x,y){return y.net-x.net||x.other-y.other;});
+    h.push('<h3>与基准「'+esc(r.docs[base].name)+'」的对比 <button id="clearbase" class="mini">清除基准</button></h3>'+
+      '<div class="scroll"><table class="stack"><thead><tr><th>稿件</th><th>与基准净雷同度</th><th>表面重合度</th><th>被基准包含</th><th>共有片段</th></tr></thead><tbody>'+
+      list.map(function(x){return '<tr><td data-label="稿件">'+esc(r.docs[x.other].name)+'</td><td data-label="与基准净雷同度"><strong>'+p1(x.net)+'%</strong></td><td data-label="表面重合度">'+p1(x.raw)+'%</td><td data-label="被基准包含">'+p1(x.con)+'%</td><td data-label="共有片段">'+x.shared+'</td></tr>';}).join('')+
+      '</tbody></table></div>'+
+      (list.length?'<p class="hint">最像基准的是 <strong>'+esc(r.docs[list[0].other].name)+'</strong>（'+p1(list[0].net)+'%）。</p>':''));
+  }
+
+  // 样板与敏感性
+  h.push('<h3>全组公共样板</h3>');
+  h.push('<p class="hint">出现在<strong>全部 '+r.N+' 份</strong>稿件里的片段共 <strong>'+r.gramStats.boiler+'</strong> 个，平均占每份稿件片段数的 <strong>'+p1(r.gramStats.boilerShareAvg)+'%</strong>。'+
+    (r.gramStats.boilerApplied?'这些片段在计算净雷同度时<strong>被摘掉不计</strong>（权重 0），这正是「看起来都很像」与「净雷同」之间的差额来源。':'本轮只有 2 份稿件，没有「全组样板」可言（任何共有片段都只在这两份里），净雷同度等于表面重合度。')+'</p>');
+  if(r.gramStats.boiler){
+    h.push('<div class="bars">'+r.docs.map(function(d){
+      return '<div class="bar-row"><span class="bar-name">'+esc(d.name)+'</span><span class="bar-track"><i style="width:'+Math.max(2,C.round1(d.boilerShare*100))+'%"></i></span><span class="bar-val">'+p1(d.boilerShare)+'%（'+d.boilerGrams+'/'+d.grams+'）</span></div>';
+    }).join('')+'</div>');
+    h.push('<details><summary>样板片段示例（前 '+r.gramStats.boilerSamples.length+' 个）</summary><ul class="words">'+
+      r.gramStats.boilerSamples.map(function(s){return '<li><code>'+esc(s.label)+'</code> <span class="hint">出现于 '+s.df+' 份</span></li>';}).join('')+'</ul></details>');
+  }
+  h.push('<h3>阈值敏感性</h3><div class="scroll"><table class="stack"><thead><tr><th>阈值</th><th>连边对数</th><th>可疑组数</th><th>涉及稿件</th></tr></thead><tbody>'+
+    r.sensitivity.map(function(s){return '<tr'+(s.tau===r.tau?' class="cur"':'')+'><td data-label="阈值">'+s.tau+'%'+(s.tau===r.tau?'（当前）':'')+'</td><td data-label="连边对数">'+s.edges+'</td><td data-label="可疑组数">'+s.groups+'</td><td data-label="涉及稿件">'+s.involved+'</td></tr>';}).join('')+
+    '</tbody></table></div><p class="legend">阈值上下 10–20 个点就能改变结论时，别只看单一阈值下的结果。</p>');
+
+  // 各稿件概览
+  h.push('<h3>各稿件概览</h3><div class="scroll"><table class="stack"><thead><tr><th>稿件</th><th>字符</th><th>token</th><th>片段</th><th>'+boilerCol+'</th><th>'+(r.gramStats.boilerApplied?'样板占比':'共有占比')+'</th><th>独有片段</th><th>操作</th></tr></thead><tbody>'+
+    r.docs.map(function(d){
+      return '<tr><td data-label="稿件">'+esc(d.name)+(state.baseline===d.index?' <span class="tag">基准</span>':'')+'</td><td data-label="字符">'+d.chars+'</td><td data-label="token">'+d.tokens+'</td><td data-label="片段">'+d.grams+(d.wholeGram?'（整篇 1 段）':'')+'</td><td data-label="'+boilerCol+'">'+d.boilerGrams+'</td><td data-label="'+(r.gramStats.boilerApplied?'样板占比':'共有占比')+'">'+p1(d.boilerShare)+'%</td><td data-label="独有片段">'+d.exclusive+'</td><td data-label="操作"><button class="mini" data-base="'+d.index+'">设为基准</button></td></tr>';
+    }).join('')+'</tbody></table></div>');
+
+  $('result').innerHTML=h.join('');
+  Array.prototype.forEach.call(document.querySelectorAll('button[data-base]'),function(b){
+    b.addEventListener('click',function(){state.baseline=+b.getAttribute('data-base');render(state.result);});
+  });
+  var cb=$('clearbase');
+  if(cb)cb.addEventListener('click',function(){state.baseline=null;render(state.result);});
+  $('downloads').style.display='flex';
+  return h.join('');
+}
+
+function stat(v,label){return '<div><strong>'+v+'</strong><span>'+label+'</span></div>';}
+function cellColor(v){
+  var a=Math.min(0.92,Math.max(0,v)) ;
+  return 'rgba(45,95,150,'+(a*0.85+0.04).toFixed(3)+')';
+}
+function context(label,i,block){
+  var toks=state.tokens?state.tokens[i]:null;
+  if(!toks)return '';
+  var before=toks.slice(Math.max(0,block.i-8),block.i).join(' ');
+  var body=toks.slice(block.i,block.i+Math.min(block.len,24)).join(' ')+(block.len>24?' …':'');
+  var after=toks.slice(block.i+block.len,block.i+block.len+8).join(' ');
+  return '<p class="ctx"><span class="who">'+esc(label)+'</span>'+
+    (before?'<span class="dim">…'+esc(before)+'</span> ':'')+
+    '<mark>'+esc(body)+'</mark>'+(after?' <span class="dim">'+esc(after)+'…</span>':'')+'</p>';
+}
+function variantHint(r){
+  if(!state.variant||!state.variant.docs||state.variant.docs.length!==r.N)return '';
+  var key=function(p){return p.a+'-'+p.b;};
+  var cur={};r.links.forEach(function(l){cur[key(l)]=1;});
+  var alt={};state.variant.links.forEach(function(l){alt[key(l)]=1;});
+  var add=state.variant.links.filter(function(l){return !cur[key(l)];});
+  var del=r.links.filter(function(l){return !alt[key(l)];});
+  if(!add.length&&!del.length)return '';
+  var flip=!r.opts.flatten;
+  var parts=[];
+  if(add.length){
+    var best=add.slice().sort(function(x,y){return y.jaccardW-x.jaccardW;})[0];
+    parts.push('新增 '+add.length+' 对（最强：'+esc(r.docs[best.a].name)+'–'+esc(r.docs[best.b].name)+' '+p1(best.jaccardW)+'%）');
+  }
+  if(del.length)parts.push('减少 '+del.length+' 对');
+  return '<div class="notice cool"><strong>'+(flip?'打开「抹平标识符」后':'关掉「抹平标识符」后')+'：</strong>连边从 '+r.stats.linkCount+' 对变成 '+state.variant.stats.linkCount+' 对，'+parts.join('、')+'。'+
+    '改名的重合要另看一眼 —— 抹平后连边会变多，因为标识符、数字、字符串都被统一了。'+
+    '<button id="tryvariant" class="mini">'+(flip?'抹平标识符后复算':'关掉抹平标识符复算')+'</button></div>';
+}
+
+// ── 导出 ────────────────────────────────────────────────────
+function download(name,text,mime){
+  var blob=new Blob([text],{type:mime||'text/plain;charset=utf-8'});
+  var url=URL.createObjectURL(blob),a=document.createElement('a');
+  a.href=url;a.download=name;document.body.appendChild(a);a.click();
+  setTimeout(function(){URL.revokeObjectURL(url);a.remove();},1500);
+}
+function csvText(){
+  var r=state.result,ev={};
+  r.evidence.forEach(function(e){ev[e.a+'-'+e.b]=e.maxBlock;});
+  var head=['稿件A','稿件B','净雷同度%','表面重合度%','A到B包含度%','B到A包含度%','双向包含度%','共有片段','并集片段','共有样板片段','最长公共段token','判定'];
+  var lines=[head.join(',')];
+  r.pairs.forEach(function(p){
+    var over=(p.containmentMax>=r.tau/100||p.jaccardW>=r.tau/100)?'达标':'未达阈值';
+    var mb=ev[p.a+'-'+p.b];
+    lines.push([r.docs[p.a].name,r.docs[p.b].name,p1(p.jaccardW),p1(p.jaccardRaw),p1(p.cAB),p1(p.cBA),p1(p.containmentMax),p.shared,p.union,p.sharedBoiler,(mb===undefined?'':mb),over]
+      .map(function(x){x=String(x);return /[",\n]/.test(x)?'"'+x.replace(/"/g,'""')+'"':x;}).join(','));
+  });
+  lines.push('');
+  lines.push(['可疑组','成员','组内对数','达阈值对数','最高净雷同度%','最低净雷同度%'].join(','));
+  r.groups.forEach(function(g,gi){
+    lines.push([('组'+(gi+1)),g.members.map(function(i){return r.docs[i].name;}).join(' / '),g.edgeCount,g.linkCount,p1(g.maxW),p1(g.minW)].join(','));
+  });
+  lines.push('');
+  lines.push('说明：最长公共段只对证据对计算；净雷同度=摘掉全组公共样板后的重合度；全部数字由同一次计算导出。');
+  return lines.join('\n');
+}
+function mdText(){
+  var r=state.result,h=[];
+  h.push('# 雷同度对账台 · 本轮结果（'+r.N+' 份稿件）');
+  h.push('');
+  h.push('- 片段长度 k：'+r.k+'；连边阈值：'+r.tau+'%；全组公共样板片段：'+r.gramStats.boiler+' 个（平均占每份 '+p1(r.gramStats.boilerShareAvg)+'%）');
+  h.push('- 达阈值对数：'+r.stats.linkCount+'；可疑组：'+r.stats.groupCount+' 组（最大 '+r.stats.largest+' 份）；独立稿件：'+r.stats.independent+' 份');
+  h.push('- 只像在样板上的对：'+r.stats.misleadingCount+' 对');
+  if(r.groups.length){
+    h.push('');h.push('## 可疑组');
+    r.groups.forEach(function(g,gi){
+      h.push('- 组 '+(gi+1)+'：'+g.members.map(function(i){return r.docs[i].name;}).join(' / ')+'（组内 '+g.edgeCount+' 对，'+g.linkCount+' 对达标，最高 '+p1(g.maxW)+'%、最低 '+p1(g.minW)+'%）');
+    });
+  }
+  h.push('');h.push('## 逐对明细（前 '+Math.min(r.tablePairs,r.pairs.length)+' 对）');
+  h.push('| 稿件A | 稿件B | 净雷同度 | 表面重合度 | 双向包含度 | 共有/并集 | 判定 |');
+  h.push('|---|---|---|---|---|---|---|');
+  r.pairs.slice(0,r.tablePairs).forEach(function(p){
+    var over=(p.containmentMax>=r.tau/100||p.jaccardW>=r.tau/100)?'达标':'未达阈值';
+    h.push('| '+r.docs[p.a].name+' | '+r.docs[p.b].name+' | '+p1(p.jaccardW)+'% | '+p1(p.jaccardRaw)+'% | '+p1(p.containmentMax)+'% | '+p.shared+' / '+p.union+' | '+over+' |');
+  });
+  var ev=r.evidence.filter(function(e){return e.blockCount>0;});
+  if(ev.length){
+    h.push('');h.push('## 最长公共段');
+    ev.forEach(function(e){h.push('- '+r.docs[e.a].name+' × '+r.docs[e.b].name+'：'+e.blockCount+' 段，最长 '+e.maxBlock+' 个 token');});
+  }
+  h.push('');h.push('## 阈值敏感性');
+  r.sensitivity.forEach(function(s){h.push('- 阈值 '+s.tau+'%：连边 '+s.edges+' 对、可疑组 '+s.groups+' 组、涉及 '+s.involved+' 份'+(s.tau===r.tau?'（当前）':''));});
+  h.push('');h.push('## 口径与边界');
+  h.push('- 片段 = 连续 k 个 token；样板 = 出现在全部 N 份中的片段（N≥3 时权重记 0，即摘掉不计）。');
+  h.push('- 净雷同度 = 摘掉样板后的加权 Jaccard；表面重合度 = 不摘样板的 Jaccard；包含度 = 一份稿件的片段有多少比例能在另一份里找到（双向取大）。');
+  h.push('- 连边条件：双向包含度 ≥ 阈值（净雷同度 ≥ 阈值必然也满足包含度 ≥ 阈值）。');
+  h.push('- 只做文本字面重合，不做语义、逻辑、思路层面的抄袭判定；不联网比对；不下结论、不给处分建议。');
+  h.push('');h.push('（本文件由雷同度对账台导出，数字与页面、CSV 同源。）');
+  return h.join('\n');
+}
+function pngCard(){
+  var r=state.result,W=1080,H=1350,cv=document.createElement('canvas');
+  cv.width=W;cv.height=H;var x=cv.getContext('2d');
+  x.fillStyle='#f4f7fb';x.fillRect(0,0,W,H);
+  x.fillStyle='#2d5f96';x.fillRect(0,0,W,16);
+  x.fillStyle='#22344e';x.font='700 62px "PingFang SC","Hiragino Sans GB",sans-serif';
+  x.fillText('雷同度对账台',72,140);
+  x.fillStyle='#5a6d84';x.font='400 34px "PingFang SC",sans-serif';
+  x.fillText(r.N+' 份稿件的两两重合对账 · k='+r.k+' · 阈值 '+r.tau+'%',72,196);
+  x.fillStyle='#22344e';x.font='700 118px "PingFang SC",sans-serif';
+  x.fillText(r.stats.groupCount+' 组',72,350);
+  x.font='400 40px "PingFang SC",sans-serif';x.fillStyle='#5a6d84';
+  x.fillText('可疑雷同（最大 '+r.stats.largest+' 份）',72,412);
+  var top=r.pairs[0];
+  if(top){
+    x.fillStyle='#a23b28';x.font='700 96px "PingFang SC",sans-serif';
+    x.fillText(p1(top.jaccardW)+'%',600,350);
+    x.fillStyle='#5a6d84';x.font='400 34px "PingFang SC",sans-serif';
+    x.fillText('最高一对：'+r.docs[top.a].name+' × '+r.docs[top.b].name,600,404);
+  }
+  x.strokeStyle='#d9e3ee';x.lineWidth=2;x.beginPath();x.moveTo(72,470);x.lineTo(W-72,470);x.stroke();
+  // 自动缩字号的单行绘制，避免超出 1080 画布
+  function fit(text,y,size,color,weight,maxW){
+    var f=weight+' '+size+'px "PingFang SC","Hiragino Sans GB",sans-serif';
+    x.font=f;
+    while(x.measureText(text).width>(maxW||W-144)&&size>15){size-=2;x.font=weight+' '+size+'px "PingFang SC","Hiragino Sans GB",sans-serif';}
+    x.fillStyle=color;x.fillText(text,72,y);
+  }
+  fit('达阈值 '+r.stats.linkCount+' 对 · 涉及 '+r.stats.involved+' 份 · 独立 '+r.stats.independent+' 份 · 只像在样板上的对 '+r.stats.misleadingCount+' 对',544,38,'#22344e','700');
+  fit('全组公共样板片段 '+r.gramStats.boiler+' 个，平均占每份 '+p1(r.gramStats.boilerShareAvg)+'%（计算净雷同度时摘掉不计）',596,30,'#5a6d84','400');
+  var y=680;
+  x.fillStyle='#22344e';x.font='700 44px "PingFang SC",sans-serif';
+  x.fillText('可疑组',72,y);y+=60;
+  x.font='400 34px "PingFang SC",sans-serif';
+  if(r.groups.length){
+    r.groups.slice(0,4).forEach(function(g){
+      x.fillStyle='#22344e';
+      x.fillText('组：'+g.members.map(function(i){return r.docs[i].name;}).join(' / '),72,y);y+=48;
+      x.fillStyle='#5a6d84';
+      x.fillText('　'+g.edgeCount+' 对里 '+g.linkCount+' 对达标，最高 '+p1(g.maxW)+'%、最低 '+p1(g.minW)+'%',72,y);y+=52;
+    });
+  }else{
+    x.fillStyle='#2b6b4f';x.fillText('没有达到阈值的雷同对',72,y);y+=52;
+  }
+  y+=20;
+  x.fillStyle='#22344e';x.font='700 44px "PingFang SC",sans-serif';
+  x.fillText('最像的 5 对',72,y);y+=60;
+  x.font='400 32px "PingFang SC",sans-serif';
+  r.pairs.slice(0,5).forEach(function(p){
+    x.fillStyle='#22344e';
+    x.fillText(r.docs[p.a].name+' × '+r.docs[p.b].name,72,y);
+    x.fillStyle='#2d5f96';
+    x.font='400 30px "PingFang SC",sans-serif';
+    x.fillText('净 '+p1(p.jaccardW)+'%　表面 '+p1(p.jaccardRaw)+'%　包含 '+p1(p.containmentMax)+'%',500,y);
+    x.font='400 32px "PingFang SC",sans-serif';
+    y+=46;
+  });
+  y=Math.max(y+30,H-140);
+  fit('默认示例为虚构数据；全部数字来自同一次计算；只做文本字面重合对账，不判定抄袭。',y,26,'#718095','400');
+  fit('雷同度对账台 · V1.0.0 · AI 辅助开发',y+42,26,'#718095','400');
+  cv.toBlob(function(b){download('雷同度对账台-结果卡.png',b,'image/png');},'image/png');
+}
+
+// ── 持久化 ──────────────────────────────────────────────────
+function saveLocal(){
+  var data={docs:$('docs').value,k:$('k').value,tau:$('tau').value,opts:optsFromDom(),ts:new Date().toISOString()};
+  try{localStorage.setItem(STORE,JSON.stringify(data));setMessage('已保存到本机浏览器（'+data.ts+'）。刷新或重开后点「恢复已保存」即可回到这份输入。');}
+  catch(e){setMessage('保存失败：'+e.message,true);}
+}
+function loadLocal(silent){
+  var raw=null;
+  try{raw=localStorage.getItem(STORE);}catch(e){}
+  if(!raw){if(!silent)setMessage('本机没有已保存的输入。',true);return false;}
+  try{
+    var d=JSON.parse(raw);
+    $('docs').value=d.docs||'';$('k').value=d.k||'5';$('tau').value=d.tau||'60';
+    var o=d.opts||{};
+    $('keepCase').checked=o.keepCase!==undefined?!!o.keepCase:true;
+    $('stripComments').checked=o.stripComments!==undefined?!!o.stripComments:true;
+    $('foldWhitespace').checked=o.foldWhitespace!==undefined?!!o.foldWhitespace:true;
+    $('flatten').checked=!!o.flatten;
+    recompute();
+    if(!silent)setMessage('已恢复本机保存的输入（'+(d.ts||'时间未知')+'）。');
+    return true;
+  }catch(e){if(!silent)setMessage('恢复失败：'+e.message,true);return false;}
+}
+
+// ── 初始化 ──────────────────────────────────────────────────
+function init(){
+  $('demo').addEventListener('click',function(){
+    $('docs').value=C.sample.docs;$('k').value=C.sample.k;$('tau').value=C.sample.tau;
+    $('keepCase').checked=!C.sample.opts.keepCase?false:true;
+    $('stripComments').checked=C.sample.opts.stripComments;
+    $('foldWhitespace').checked=C.sample.opts.foldWhitespace;
+    $('flatten').checked=C.sample.opts.flatten;
+    state.baseline=null;recompute();setMessage('已载入 8 份虚构示例作业（非真实考生数据）。');
+  });
+  $('tight').addEventListener('click',function(){$('tau').value='45';recompute(true);});
+  $('loose').addEventListener('click',function(){$('tau').value='75';recompute(true);});
+  ['docs','k','tau'].forEach(function(id){$(id).addEventListener('input',function(){recompute(true);});});
+  ['keepCase','stripComments','foldWhitespace','flatten'].forEach(function(id){$(id).addEventListener('change',function(){recompute(true);});});
+  $('save').addEventListener('click',saveLocal);
+  $('restore').addEventListener('click',function(){loadLocal(false);});
+  $('backup').addEventListener('click',function(){
+    download('雷同度对账台-输入备份.json',JSON.stringify({app:'dup-ledger',version:'1.0.0',saved_at:new Date().toISOString(),
+      docs:$('docs').value,k:$('k').value,tau:$('tau').value,opts:optsFromDom()},null,2),'application/json');
+  });
+  $('import').addEventListener('click',function(){$('imports').click();});
+  $('imports').addEventListener('change',function(ev){
+    var f=ev.target.files&&ev.target.files[0];if(!f)return;
+    var fr=new FileReader();
+    fr.onload=function(){
+      try{
+        var d=JSON.parse(String(fr.result));
+        if(!d||typeof d.docs!=='string')throw new Error('文件里没有 docs 字段');
+        $('docs').value=d.docs;$('k').value=d.k||'5';$('tau').value=d.tau||'60';
+        var o=d.opts||{};
+        $('keepCase').checked=o.keepCase!==undefined?!!o.keepCase:true;
+        $('stripComments').checked=o.stripComments!==undefined?!!o.stripComments:true;
+        $('foldWhitespace').checked=o.foldWhitespace!==undefined?!!o.foldWhitespace:true;
+        $('flatten').checked=!!o.flatten;
+        recompute();setMessage('已导入备份并重算。');
+      }catch(e){setMessage('导入失败：'+e.message,true);}
+      ev.target.value='';
+    };
+    fr.readAsText(f);
+  });
+  $('csv').addEventListener('click',function(){if(!state.result)return;download('雷同度对账台-逐对明细.csv','\ufeff'+csvText(),'text/csv;charset=utf-8');});
+  $('md').addEventListener('click',function(){if(!state.result)return;download('雷同度对账台-结果说明.md',mdText(),'text/markdown;charset=utf-8');});
+  $('png').addEventListener('click',function(){if(!state.result)return;pngCard();});
+  document.addEventListener('click',function(ev){
+    if(ev.target&&ev.target.id==='tryvariant'){
+      var box=$('flatten');box.checked=!box.checked;recompute(true);
+      setMessage('已切换「抹平标识符」并重算。');
+    }
+  });
+  // 默认：优先恢复本机保存，否则载入虚构示例
+  if(!loadLocal(true)){
+    $('docs').value=C.sample.docs;$('k').value=C.sample.k;$('tau').value=C.sample.tau;
+    $('stripComments').checked=true;$('foldWhitespace').checked=true;$('keepCase').checked=false;$('flatten').checked=false;
+    recompute();
+  }
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script></html>

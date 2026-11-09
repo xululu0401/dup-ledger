@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200">
+<rect width="1200" height="1200" fill="#eef3f8"/><rect width="1200" height="14" fill="#2d5f96"/>
+<text x="96" y="116" font-family="PingFang SC, Hiragino Sans GB, sans-serif" font-size="26" font-weight="700" letter-spacing="4" fill="#4f6b91">DUP LEDGER · 多份材料的两两重合对账</text>
+<text x="96" y="206" font-family="PingFang SC, Hiragino Sans GB, sans-serif" font-size="82" font-weight="800" fill="#22344e">雷同度对账台</text>
+<text x="96" y="272" font-family="PingFang SC, Hiragino Sans GB, sans-serif" font-size="36" fill="#5a6d84">8 份作业里，哪几份其实是同一份？</text>
+<text x="96" y="332" font-family="PingFang SC, Hiragino Sans GB, sans-serif" font-size="28" fill="#61738a">先摘掉全班都写的公共样板，再算两两净雷同度、双向包含度，按阈值连边成可疑组，</text>
+<text x="96" y="372" font-family="PingFang SC, Hiragino Sans GB, sans-serif" font-size="28" fill="#61738a">再给出最长公共段作为证据。</text>
+<rect x="96" y="404" width="1008" height="104" rx="14" fill="#ffffff" stroke="#d9e3ee"/>
+<text x="128" y="470" font-family="PingFang SC, Hiragino Sans GB, sans-serif" font-size="38" font-weight="700" fill="#22344e">1 组 3 份</text>
+<text x="400" y="470" font-family="PingFang SC, Hiragino Sans GB, sans-serif" font-size="34" font-weight="700" fill="#a23b28">净雷同 66.7%</text>
+<text x="790" y="470" font-family="PingFang SC, Hiragino Sans GB, sans-serif" font-size="30" font-weight="700" fill="#2b6b4f">43 个样板片段</text>
+<text x="128" y="496" font-family="PingFang SC, Hiragino Sans GB, sans-serif" font-size="19" fill="#718095">最大一组</text>
+<text x="400" y="496" font-family="PingFang SC, Hiragino Sans GB, sans-serif" font-size="19" fill="#718095">表面 80.6% · 包含 80.0%</text>
+<text x="790" y="496" font-family="PingFang SC, Hiragino Sans GB, sans-serif" font-size="19" fill="#718095">平均占每份 51.4%</text>
+<rect x="140" y="560" width="54" height="54" rx="8" fill="#e2e9f2"/>
+<rect x="202" y="560" width="54" height="54" rx="8" fill="rgba(45,95,150,0.040)" />
+<text x="229" y="594" font-size="19" text-anchor="middle" fill="#12305a">0</text>
+<rect x="264" y="560" width="54" height="54" rx="8" fill="rgba(45,95,150,0.607)" stroke="#d9694a" stroke-width="3" />
+<text x="291" y="594" font-size="19" text-anchor="middle" fill="#12305a">67</text>
+<rect x="326" y="560" width="54" height="54" rx="8" fill="rgba(45,95,150,0.489)" />
+<text x="353" y="594" font-size="19" text-anchor="middle" fill="#12305a">53</text>
+<rect x="388" y="560" width="54" height="54" rx="8" fill="rgba(45,95,150,0.040)" />
+<text x="415" y="594" font-size="19" text-anchor="middle" fill="#12305a">0</text>
+<rect x="450" y="560" width="54" height="54" rx="8" fill="rgba(45,95,150,0.049)" />
+<text x="477" y="594" font-size="19" text-anchor="middle" fill="#12305a">1</text>
+<rect x="512" y="560" width="54" height="54" rx="8" fill="rgba(45,95,150,0.040)" />
+<text x="539" y="594" font-size="19" text-anchor="middle" fill="#12305a">0</text>
+<rect x="574" y="560" width="54" height="54" rx="8" fill="rgba(45,95,150,0.040)" />
+<text x="601" y="594" font-size="19" text-anchor="middle" fill="#12305a">0</text>
+<rect x="140" y="622" width="54" height="54" rx="8" fill="rgba(45,95,150,0.040)" />
+<text x="167" y="656" font-size="19" text-anchor="middle" fill="#12305a">0</text>
+<rect x="202" y="622" width="54" height="54" rx="8" fill="#e2e9f2"/>
+<rect x="264" y="622" width="54" height="54" rx="8" fill="rgba(45,95,150,0.040)" />
+<text x="291" y="656" font-size="19" text-anchor="middle" fill="#12305a">0</text>
+<rect x="326" y="622" width="54" height="54" rx="8" fill="rgba(45,95,150,0.040)" />
+<text x="353" y="656" font-size="19" text-anchor="middle" fill="#12305a">0</text>
+<rect x="388" y="622" width="54" height="54" rx="8" fill="rgba(45,95,150,0.040)" />
+<text x="415" y="656" font-size="19" text-anchor="middle" fill="#12305a">0</text>
+<rect x="450" y="622" width="54" height="54" rx="8" fill="rgba(45,95,150,0.172)" />
+<text x="477" y="656" font-size="19" text-anchor="middle" fill="#12305a">16</text>
+<rect x="512" y="622" width="54" height="54" rx="8" fill="rgba(45,95,150,0.310)" />
+<text x="539" y="656" font-size="19" text-anchor="middle" fill="#12305a">32</text>
+<rect x="574" y="622" width="54" height="54" rx="8" fill="rgba(45,95,150,0.040)" />
+<text x="601" y="656" font-size="19" text-anchor="middle" fill="#12305a">0</text>
+<rect x="140" y="684" width="54" height="54" rx="8" fill="rgba(45,95,150,0.607)" stroke="#d9694a" stroke-width="3" />
+<text x="167" y="718" font-size="19" text-anchor="middle" fill="#12305a">67</text>
+<rect x="202" y="684" width="54" height="54" rx="8" fill="rgba(45,95,150,0.040)" />
+<text x="229" y="718" font-size="19" text-anchor="middle" fill="#12305a">0</text>
+<rect x="264" y="684" width="54" height="54" rx="8" fill="#e2e9f2"/>
+<rect x="326" y="684" width="54" height="54" rx="8" fill="rgba(45,95,150,0.330)" />
+<text x="353" y="718" font-size="19" text-anchor="middle" fill="#12305a">34</text>
+<rect x="388" y="684" width="54" height="54" rx="8" fill="rgba(45,95,150,0.040)" />
+<text x="415" y="718" font-size="19" text-anchor="middle" fill="#12305a">0</text>
+<rect x="450" y="684" width="54" height="54" rx="8" fill="rgba(45,95,150,0.049)" />
+<text x="477" y="718" font-size="19" text-anchor="middle" fill="#12305a">1</text>
+<rect x="512" y="684" width="54" height="54" rx="8" fill="rgba(45,95,150,0.040)" />
+<text x="539" y="718" font-size="19" text-anchor="middle" fill="#12305a">0</text>
+<rect x="574" y="684" width="54" height="54" rx="8" fill="rgba(45,95,150,0.040)" />
+<text x="601" y="718" font-size="19" text-anchor="middle" fill="#12305a">0</text>
+<rect x="140" y="746" width="54" height="54" rx="8" fill="rgba(45,95,150,0.489)" />
+<text x="167" y="780" font-size="19" text-anchor="middle" fill="#12305a">53</text>
+<rect x="202" y="746" width="54" height="54" rx="8" fill="rgba(45,95,150,0.040)" />
+<text x="229" y="780" font-size="19" text-anchor="middle" fill="#12305a">0</text>
+<rect x="264" y="746" width="54" height="54" rx="8" fill="rgba(45,95,150,0.330)" />
+<text x="291" y="780" font-size="19" text-anchor="middle" fill="#12305a">34</text>
+<rect x="326" y="746" width="54" height="54" rx="8" fill="#e2e9f2"/>
+<rect x="388" y="746" width="54" height="54" rx="8" fill="rgba(45,95,150,0.069)" />
+<text x="415" y="780" font-size="19" text-anchor="middle" fill="#12305a">3</text>
+<rect x="450" y="746" width="54" height="54" rx="8" fill="rgba(45,95,150,0.075)" />
+<text x="477" y="780" font-size="19" text-anchor="middle" fill="#12305a">4</text>
+<rect x="512" y="746" width="54" height="54" rx="8" fill="rgba(45,95,150,0.040)" />
+<text x="539" y="780" font-size="19" text-anchor="middle" fill="#12305a">0</text>
+<rect x="574" y="746" width="54" height="54" rx="8" fill="rgba(45,95,150,0.077)" />
+<text x="601" y="780" font-size="19" text-anchor="middle" fill="#12305a">4</text>
+<rect x="140" y="808" width="54" height="54" rx="8" fill="rgba(45,95,150,0.040)" />
+<text x="167" y="842" font-size="19" text-anchor="middle" fill="#12305a">0</text>
+<rect x="202" y="808" width="54" height="54" rx="8" fill="rgba(45,95,150,0.040)" />
+<text x="229" y="842" font-size="19" text-anchor="middle" fill="#12305a">0</text>
+<rect x="264" y="808" width="54" height="54" rx="8" fill="rgba(45,95,150,0.040)" />
+<text x="291" y="842" font-size="19" text-anchor="middle" fill="#12305a">0</text>
+<rect x="326" y="808" width="54" height="54" rx="8" fill="rgba(45,95,150,0.069)" />
+<text x="353" y="842" font-size="19" text-anchor="middle" fill="#12305a">3</text>
+<rect x="388" y="808" width="54" height="54" rx="8" fill="#e2e9f2"/>
+<rect x="450" y="808" width="54" height="54" rx="8" fill="rgba(45,95,150,0.091)" />
+<text x="477" y="842" font-size="19" text-anchor="middle" fill="#12305a">6</text>
+<rect x="512" y="808" width="54" height="54" rx="8" fill="rgba(45,95,150,0.040)" />
+<text x="539" y="842" font-size="19" text-anchor="middle" fill="#12305a">0</text>
+<rect x="574" y="808" width="54" height="54" rx="8" fill="rgba(45,95,150,0.132)" />
+<text x="601" y="842" font-size="19" text-anchor="middle" fill="#12305a">11</text>
+<rect x="140" y="870" width="54" height="54" rx="8" fill="rgba(45,95,150,0.049)" />
+<text x="167" y="904" font-size="19" text-anchor="middle" fill="#12305a">1</text>
+<rect x="202" y="870" width="54" height="54" rx="8" fill="rgba(45,95,150,0.172)" />
+<text x="229" y="904" font-size="19" text-anchor="middle" fill="#12305a">16</text>
+<rect x="264" y="870" width="54" height="54" rx="8" fill="rgba(45,95,150,0.049)" />
+<text x="291" y="904" font-size="19" text-anchor="middle" fill="#12305a">1</text>
+<rect x="326" y="870" width="54" height="54" rx="8" fill="rgba(45,95,150,0.075)" />
+<text x="353" y="904" font-size="19" text-anchor="middle" fill="#12305a">4</text>
+<rect x="388" y="870" width="54" height="54" rx="8" fill="rgba(45,95,150,0.091)" />
+<text x="415" y="904" font-size="19" text-anchor="middle" fill="#12305a">6</text>
+<rect x="450" y="870" width="54" height="54" rx="8" fill="#e2e9f2"/>
+<rect x="512" y="870" width="54" height="54" rx="8" fill="rgba(45,95,150,0.172)" />
+<text x="539" y="904" font-size="19" text-anchor="middle" fill="#12305a">16</text>
+<rect x="574" y="870" width="54" height="54" rx="8" fill="rgba(45,95,150,0.150)" />
+<text x="601" y="904" font-size="19" text-anchor="middle" fill="#12305a">13</text>
+<rect x="140" y="932" width="54" height="54" rx="8" fill="rgba(45,95,150,0.040)" />
+<text x="167" y="966" font-size="19" text-anchor="middle" fill="#12305a">0</text>
+<rect x="202" y="932" width="54" height="54" rx="8" fill="rgba(45,95,150,0.310)" />
+<text x="229" y="966" font-size="19" text-anchor="middle" fill="#12305a">32</text>
+<rect x="264" y="932" width="54" height="54" rx="8" fill="rgba(45,95,150,0.040)" />
+<text x="291" y="966" font-size="19" text-anchor="middle" fill="#12305a">0</text>
+<rect x="326" y="932" width="54" height="54" rx="8" fill="rgba(45,95,150,0.040)" />
+<text x="353" y="966" font-size="19" text-anchor="middle" fill="#12305a">0</text>
+<rect x="388" y="932" width="54" height="54" rx="8" fill="rgba(45,95,150,0.040)" />
+<text x="415" y="966" font-size="19" text-anchor="middle" fill="#12305a">0</text>
+<rect x="450" y="932" width="54" height="54" rx="8" fill="rgba(45,95,150,0.172)" />
+<text x="477" y="966" font-size="19" text-anchor="middle" fill="#12305a">16</text>
+<rect x="512" y="932" width="54" height="54" rx="8" fill="#e2e9f2"/>
+<rect x="574" y="932" width="54" height="54" rx="8" fill="rgba(45,95,150,0.040)" />
+<text x="601" y="966" font-size="19" text-anchor="middle" fill="#12305a">0</text>
+<rect x="140" y="994" width="54" height="54" rx="8" fill="rgba(45,95,150,0.040)" />
+<text x="167" y="1028" font-size="19" text-anchor="middle" fill="#12305a">0</text>
+<rect x="202" y="994" width="54" height="54" rx="8" fill="rgba(45,95,150,0.040)" />
+<text x="229" y="1028" font-size="19" text-anchor="middle" fill="#12305a">0</text>
+<rect x="264" y="994" width="54" height="54" rx="8" fill="rgba(45,95,150,0.040)" />
+<text x="291" y="1028" font-size="19" text-anchor="middle" fill="#12305a">0</text>
+<rect x="326" y="994" width="54" height="54" rx="8" fill="rgba(45,95,150,0.077)" />
+<text x="353" y="1028" font-size="19" text-anchor="middle" fill="#12305a">4</text>
+<rect x="388" y="994" width="54" height="54" rx="8" fill="rgba(45,95,150,0.132)" />
+<text x="415" y="1028" font-size="19" text-anchor="middle" fill="#12305a">11</text>
+<rect x="450" y="994" width="54" height="54" rx="8" fill="rgba(45,95,150,0.150)" />
+<text x="477" y="1028" font-size="19" text-anchor="middle" fill="#12305a">13</text>
+<rect x="512" y="994" width="54" height="54" rx="8" fill="rgba(45,95,150,0.040)" />
+<text x="539" y="1028" font-size="19" text-anchor="middle" fill="#12305a">0</text>
+<rect x="574" y="994" width="54" height="54" rx="8" fill="#e2e9f2"/>
+<text x="126" y="594" font-size="20" text-anchor="end" fill="#62748c">张一</text>
+<text x="167" y="544" font-size="20" text-anchor="middle" fill="#62748c">张一</text>
+<text x="126" y="656" font-size="20" text-anchor="end" fill="#62748c">李二</text>
+<text x="229" y="544" font-size="20" text-anchor="middle" fill="#62748c">李二</text>
+<text x="126" y="718" font-size="20" text-anchor="end" fill="#62748c">王三</text>
+<text x="291" y="544" font-size="20" text-anchor="middle" fill="#62748c">王三</text>
+<text x="126" y="780" font-size="20" text-anchor="end" fill="#62748c">赵四</text>
+<text x="353" y="544" font-size="20" text-anchor="middle" fill="#62748c">赵四</text>
+<text x="126" y="842" font-size="20" text-anchor="end" fill="#62748c">陈五</text>
+<text x="415" y="544" font-size="20" text-anchor="middle" fill="#62748c">陈五</text>
+<text x="126" y="904" font-size="20" text-anchor="end" fill="#62748c">刘六</text>
+<text x="477" y="544" font-size="20" text-anchor="middle" fill="#62748c">刘六</text>
+<text x="126" y="966" font-size="20" text-anchor="end" fill="#62748c">孙七</text>
+<text x="539" y="544" font-size="20" text-anchor="middle" fill="#62748c">孙七</text>
+<text x="126" y="1028" font-size="20" text-anchor="end" fill="#62748c">周八</text>
+<text x="601" y="544" font-size="20" text-anchor="middle" fill="#62748c">周八</text>
+<text x="96" y="1108" font-family="PingFang SC, Hiragino Sans GB, sans-serif" font-size="26" fill="#718095">净雷同度矩阵（红框 = 达到 60% 阈值）：张一 / 王三 / 赵四 成一组</text>
+<text x="96" y="1156" font-family="PingFang SC, Hiragino Sans GB, sans-serif" font-size="23" fill="#8a99ac">默认示例为虚构的 8 份作业 · 只做文本字面重合对账，不判定抄袭 · 数字来自同一次计算</text>
+</svg>
